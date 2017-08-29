@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "lib": ["DOM", "ES2015"],
+    "module": "commonjs",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es5"
+  }
+}
