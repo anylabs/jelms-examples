@@ -1,6 +1,6 @@
+import { program } from "jelms"
 import * as React from "react"
 import { render } from "react-dom"
-import { program } from "jelms"
 
 type Model = {
   readonly counter: number

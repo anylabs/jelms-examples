@@ -1,21 +1,37 @@
 import * as React from "react"
-import { Msg } from "./msg"
-import { Profile } from "./model"
+import { Consumer } from "./program"
 
-type Props = {
-  emit: (msg: Msg) => void
-  name: string
-  profile?: Profile
-}
-
-export default ({ emit, name, profile }: Props) =>
+export default () => (
   <div>
-    <h1>
-      {profile ? `${profile.name} (${profile.id})` : "Enter username"}
-    </h1>
-    <input
-      onChange={e => emit({ type: "NameUpdated", name: e.target.value })}
-      value={name}
-    />
-    <button onClick={() => emit({ type: "LoadProfile" })}>Load!</button>
+    <Header />
+    <NameInput />
+    <LoadButton />
   </div>
+)
+
+const Header = () => (
+  <Consumer>
+    {({ model: { profile } }) => (
+      <h1>{profile ? `${profile.name} (${profile.id})` : "Enter username"}</h1>
+    )}
+  </Consumer>
+)
+
+const NameInput = () => (
+  <Consumer>
+    {({ emit, model: { name } }) => (
+      <input
+        onChange={e => emit({ type: "NameUpdated", name: e.target.value })}
+        value={name}
+      />
+    )}
+  </Consumer>
+)
+
+const LoadButton = () => (
+  <Consumer>
+    {({ emit }) => (
+      <button onClick={() => emit({ type: "LoadProfile" })}>Load!</button>
+    )}
+  </Consumer>
+)

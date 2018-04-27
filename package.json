@@ -1,34 +1,30 @@
 {
   "dependencies": {
-    "@types/react": "^16.0.2",
-    "@types/react-dom": "^15.5.2",
-    "jelms": "0.0.7",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "jelms": "0.0.8",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^3.2.3",
-    "eslint": "^4.4.1",
-    "eslint-plugin-prettier": "^2.1.2",
-    "eslint-plugin-typescript": "^0.7.0",
-    "prettier": "^1.5.3",
-    "prettier-eslint": "^6.4.2",
-    "typescript": "^2.4.2",
-    "typescript-eslint-parser": "^7.0.0",
-    "uglifyjs-webpack-plugin": "^0.4.6",
-    "webpack": "^3.5.3",
-    "webpack-dev-server": "^2.7.1",
-    "webpack-merge": "^4.1.0"
+    "@types/react": "^16.3.13",
+    "@types/react-dom": "^16.0.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-runtime": "^6.26.0",
+    "parcel-bundler": "^1.7.1",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.12.0",
+    "tslint-react": "^3.5.1",
+    "typescript": "^2.8.3"
   },
   "license": "MIT",
   "name": "jelms-examples",
   "private": true,
   "repository": "https://github.com/hfjallemark/jelms-examples",
   "scripts": {
-    "build":
-      "webpack -p | cp counter/index.html dist/counter | cp github/index.html dist/github",
-    "lint": "eslint **/*.ts **/*.tsx",
-    "start": "webpack-dev-server"
+    "build": "yarn build:counter && yarn build:github",
+    "build:counter": "parcel build counter/index.html",
+    "build:github": "parcel build github/index.html",
+    "start:counter": "parcel counter/index.html",
+    "start:github": "parcel github/index.html"
   },
   "version": "1.0.0"
 }
